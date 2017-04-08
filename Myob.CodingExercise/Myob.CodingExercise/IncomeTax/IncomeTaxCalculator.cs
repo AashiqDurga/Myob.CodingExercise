@@ -20,8 +20,8 @@ namespace Myob.CodingExercise.IncomeTax
 
         private static TaxBracket FindTaxBracket(int annualSalary)
         {
-            if (annualSalary < 1)
-                throw new ArgumentOutOfRangeException(nameof(annualSalary),"Annual salary cannot be less than 1");
+            if (annualSalary < 0)
+                throw new ArgumentOutOfRangeException(nameof(annualSalary),"Annual salary cannot be less than 0");
 
             if (annualSalary < 18201)
                 return new TaxBracket();

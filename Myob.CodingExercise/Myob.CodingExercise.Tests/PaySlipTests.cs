@@ -1,4 +1,5 @@
-﻿using Myob.CodingExercise.PaySlip;
+﻿using Myob.CodingExercise.CsvParser;
+using Myob.CodingExercise.PaySlip;
 using NUnit.Framework;
 
 namespace Myob.CodingExercise.Tests
@@ -6,14 +7,22 @@ namespace Myob.CodingExercise.Tests
     [TestFixture]
     public class PaySlipTests
     {
+        private Parser _csvParser;
+        private PayslipGenerator _payslipGenerator;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _csvParser = new Parser();
+            _payslipGenerator = new PayslipGenerator();
+        }
+
         [TestCase("David,Rudd,60050,9%,01 March – 31 March")]
         public void GivenACsvline_GenerateAPayslip(string csvLine)
         {
-            var csvParser = new CsvParser.Parser();
-            var employeeDetails = csvParser.Parse(csvLine);
-            var payslipGenerator = new PayslipGenerator();
+            var employeeDetails = _csvParser.Parse(csvLine);
 
-            var payslip = payslipGenerator.Generate(employeeDetails);
+            var payslip = _payslipGenerator.Generate(employeeDetails);
 
             Assert.That(payslip.Name, Is.EqualTo("David Rudd"));
             Assert.That(payslip.PayPeriod, Is.EqualTo("01 March – 31 March"));

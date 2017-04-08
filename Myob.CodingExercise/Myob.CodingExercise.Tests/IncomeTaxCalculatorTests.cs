@@ -29,5 +29,10 @@ namespace Myob.CodingExercise.Tests
             Assert.That(result, Is.EqualTo(expectedResult));
         }
 
+        [Test]
+        public void GivenAnAnnualSalary_WhenTeSalaryIsLessThanZero_ThenThrowAnException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => _incomeTaxCalculator.Calculate(-1));
+        }
     }
 }

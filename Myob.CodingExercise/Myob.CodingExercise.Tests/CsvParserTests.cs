@@ -7,13 +7,18 @@ namespace Myob.CodingExercise.Tests
     [TestFixture]
     public class CsvParserTests
     {
-        [Test]
-        public void GivenAVaildCsv_CanParseLineToEmployeeObject()
-        {
-            const string csvLine = "David,Rudd,60050,9%,01 March – 31 March";
+        private Parser _csvParser;
 
-            var csvParser = new Parser();
-            var result = csvParser.Parse(csvLine);
+        [SetUp]
+        public void SetUp()
+        {
+            _csvParser = new Parser();
+        }
+
+        [TestCase("David,Rudd,60050,9%,01 March – 31 March")]
+        public void GivenAVaildCsv_CanParseLineToEmployeeObject(string csvLine)
+        {
+            var result = _csvParser.Parse(csvLine);
 
             Assert.That(result.FirstName, Is.EqualTo("David"));
             Assert.That(result.Surname, Is.EqualTo("Rudd"));
@@ -22,7 +27,6 @@ namespace Myob.CodingExercise.Tests
             Assert.That(result.PaymentPeriod, Is.EqualTo("01 March – 31 March"));
         }
 
-        [Test]
         [TestCase("9%",9)]
         [TestCase("25%",25)]
         public void GivenAValidPercentageReturnTheDecimal(string valueUnderTest, decimal expecteDecimal)
