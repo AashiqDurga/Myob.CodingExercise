@@ -17,7 +17,7 @@ To run the soltion simply open the .sln file in Visual Studio make sure the Myob
 The initial program has a csv line input supplied in the program.cs and would right the results of the line to the console.
 
 
-All feedback and advide to improve the solution is appreciated. :)
+All feedback and advise to improve the solution is appreciated. :)
 
 Problem: Employee monthly payslip
 
