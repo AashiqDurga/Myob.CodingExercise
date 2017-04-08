@@ -7,6 +7,7 @@ namespace Myob.CodingExercise.CsvParser
     {
         private const int MinimumSuperRate = 0;
         private const int MaximumSuperRate = 50;
+
         public static decimal GetValidPercentAsDeciamal(string percentageWithSymbol)
         {
             var superRatePercentage = Convert.ToDecimal(percentageWithSymbol.Split('%').First());
