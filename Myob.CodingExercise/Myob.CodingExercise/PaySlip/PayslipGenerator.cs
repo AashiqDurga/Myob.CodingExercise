@@ -6,6 +6,8 @@ namespace Myob.CodingExercise.PaySlip
 {
     public class PayslipGenerator
     {
+        private const int MonthsInYear = 12;
+
         public PaySlip Generate(EmployeeDetails employeeDetails)
         {
             return BuildPaySlip(employeeDetails);
@@ -24,13 +26,18 @@ namespace Myob.CodingExercise.PaySlip
                 GrossIncome = grossIncome,
                 IncomeTax = incomeTax,
                 NetIncome = grossIncome - incomeTax,
-                Super = Math.Round(grossIncome * (employeeDetails.SuperRate / 100), MidpointRounding.AwayFromZero)
+                Super = CalculateSuper(employeeDetails.SuperRate, grossIncome)
             };
         }
 
         private static int CalculateGrossIncome(int annualSalary)
         {
-            return annualSalary / 12;
+            return annualSalary / MonthsInYear;
+        }
+
+        private static decimal CalculateSuper(decimal superRate, int grossIncome)
+        {
+            return Math.Round(grossIncome * (superRate / 100), MidpointRounding.AwayFromZero);
         }
     }
 }
