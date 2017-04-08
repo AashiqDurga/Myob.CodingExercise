@@ -29,7 +29,7 @@ namespace Myob.CodingExercise.Tests
 
         [TestCase("9%",9)]
         [TestCase("25%",25)]
-        public void GivenAValidPercentageReturnTheDecimal(string valueUnderTest, decimal expecteDecimal)
+        public void GivenAValidPercentage_ReturnTheDecimal(string valueUnderTest, decimal expecteDecimal)
         {
             Assert.That(ParserHelperMethods.GetValidPercentAsDeciamal(valueUnderTest), Is.EqualTo(expecteDecimal));
         } 

@@ -22,7 +22,7 @@ namespace Myob.CodingExercise.Tests
         [TestCase(60050, 922)]
         [TestCase(120000, 2696)]
         [TestCase(300000, 9046)]
-        public void GivenAnAnnualSalary_CalculateTheMOnthlyIncomeTax(int annualSalary, int expectedResult)
+        public void GivenAnAnnualSalary_CalculateTheMonthlyIncomeTax(int annualSalary, int expectedResult)
         {
             var result = _incomeTaxCalculator.Calculate(annualSalary);
 
@@ -30,7 +30,7 @@ namespace Myob.CodingExercise.Tests
         }
 
         [Test]
-        public void GivenAnAnnualSalary_WhenTeSalaryIsLessThanZero_ThenThrowAnException()
+        public void GivenAnAnnualSalary_WhenTheSalaryIsLessThanZero_ThenThrowAnException()
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => _incomeTaxCalculator.Calculate(-1));
         }
